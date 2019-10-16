@@ -1,0 +1,44 @@
+{
+  "name": ":vendor/:package_name",
+  "description": ":package_description",
+  "homepage": "https://github.com/:vendor/:package_name",
+  "keywords": [
+    "laravel",
+    "agenciafmd"
+  ],
+  "authors": [
+    {
+      "name": ":author_name",
+      "email": ":author_email",
+      "homepage": "https://fmd.ag/",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "laravel/framework": "5.8.*"
+  },
+  "autoload": {
+    "classmap": [
+      "src/database/seeds",
+      "src/database/factories"
+    ],
+    "files": [
+      "src/Http/helpers.php"
+    ],
+    "psr-4": {
+      ":namespace_vendor\\:namespace_skeleton_name\\": "src/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        ":namespace_vendor\\:namespace_skeleton_name\\Providers\\:skeleton_nameServiceProvider"
+      ],
+      "aliases": {
+      }
+    }
+  },
+  "config": {
+    "sort-packages": true
+  }
+}
