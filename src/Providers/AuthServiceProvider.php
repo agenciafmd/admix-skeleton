@@ -1,7 +1,6 @@
 <?php
 
-namespace :
-namespace_vendor\:namespace_skeleton_name\Providers;
+namespace :namespace_vendor\:namespace_skeleton_name\Providers;
 
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 

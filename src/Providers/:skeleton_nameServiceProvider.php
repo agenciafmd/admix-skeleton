@@ -1,14 +1,12 @@
 <?php
 
-namespace :
-namespace_vendor\:namespace_skeleton_name\Providers;
+namespace :namespace_vendor\:namespace_skeleton_name\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
 class :skeleton_nameServiceProvider extends ServiceProvider
 {
-    public
-    function boot()
+    public function boot()
     {
         $this->providers();
 
@@ -29,15 +27,13 @@ class :skeleton_nameServiceProvider extends ServiceProvider
         }
     }
 
-    protected
-    function providers()
+    protected function providers()
     {
         $this->app->register(RouteServiceProvider::class);
         $this->app->register(AuthServiceProvider::class);
     }
 
-    protected
-    function setMenu()
+    protected function setMenu()
     {
         $this->app->make('admix-menu')
             ->push((object)[
@@ -46,53 +42,45 @@ class :skeleton_nameServiceProvider extends ServiceProvider
             ]);
     }
 
-    protected
-    function loadViews()
+    protected function loadViews()
     {
         $this->loadViewsFrom(__DIR__ . '/../resources/views', ':vendor/:skeleton_name_plural_lower');
     }
 
-    protected
-    function loadMigrations()
+    protected function loadMigrations()
     {
         $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
     }
 
-    protected
-    function loadTranslations()
+    protected function loadTranslations()
     {
         $this->loadJsonTranslationsFrom(__DIR__ . '/../resources/lang');
     }
 
-    protected
-    function loadViewComposer()
+    protected function loadViewComposer()
     {
         //
     }
 
-    protected
-    function publish()
+    protected function publish()
     {
         $this->publishes([
             __DIR__ . '/../resources/views' => base_path('resources/views/vendor/:vendor/:skeleton_name_plural_lower'),
         ], 'views');
     }
 
-    public
-    function setLocalFactories()
+    public function setLocalFactories()
     {
         $this->app->make('Illuminate\Database\Eloquent\Factory')
             ->load(__DIR__ . '/../database/factories');
     }
 
-    public
-    function register()
+    public function register()
     {
         $this->loadConfigs();
     }
 
-    protected
-    function loadConfigs()
+    protected function loadConfigs()
     {
         $this->mergeConfigFrom(__DIR__ . '/../config/:package_name.php', ':package_name');
         $this->mergeConfigFrom(__DIR__ . '/../config/gate.php', 'gate');

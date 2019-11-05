@@ -1,14 +1,15 @@
 <?php
 
-namespace :
-namespace_vendor\:namespace_skeleton_name\Http\Controllers;
+namespace :namespace_vendor\:namespace_skeleton_name\Http\Controllers;
 
-use;use App\Http\Controllers\Controller;use Illuminate\Http\Request;use Spatie\QueryBuilder\QueryBuilder;:namespace_vendor\:namespace_skeleton_name\:skeleton_name;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use Spatie\QueryBuilder\QueryBuilder;
+use :namespace_vendor\:namespace_skeleton_name\:skeleton_name;
 
 class :skeleton_nameController extends Controller
 {
-    public
-    function index(Request $request)
+    public function index(Request $request)
     {
         session()->put('backUrl', request()->fullUrl());
 
@@ -25,8 +26,7 @@ class :skeleton_nameController extends Controller
         return view(':vendor/:skeleton_name_plural_lower::index', $view);
     }
 
-    public
-    function create(: skeleton_name $:skeleton_name_lower)
+    public function create(:skeleton_name $:skeleton_name_lower)
     {
         $view['model'] = $:skeleton_name_lower;
 
@@ -34,31 +34,31 @@ class :skeleton_nameController extends Controller
     }
 
     public function store(Request $request)
-{
-    if (:skeleton_name::create($request->all())) {
-        flash('Item inserido com sucesso.', 'success');
-    } else {
-        flash('Falha no cadastro.', 'danger');
-    }
+    {
+        if (:skeleton_name::create($request->all())) {
+            flash('Item inserido com sucesso.', 'success');
+        } else {
+            flash('Falha no cadastro.', 'danger');
+        }
 
         return ($url = session()->get('backUrl')) ? redirect($url) : redirect()->route('admix.:skeleton_name_plural_lower.index');
     }
 
-    public function show(: skeleton_name $:skeleton_name_lower)
+    public function show(:skeleton_name $:skeleton_name_lower)
     {
         $view['model'] = $:skeleton_name_lower;
 
         return view(':vendor/:skeleton_name_plural_lower::form', $view);
     }
 
-    public function edit(: skeleton_name $:skeleton_name_lower)
+    public function edit(:skeleton_name $:skeleton_name_lower)
     {
         $view['model'] = $:skeleton_name_lower;
 
         return view(':vendor/:skeleton_name_plural_lower::form', $view);
     }
 
-    public function update(: skeleton_name $:skeleton_name_lower, Request $request)
+    public function update(:skeleton_name $:skeleton_name_lower, Request $request)
     {
         if ($:skeleton_name_lower->update($request->all())) {
             flash('Item atualizado com sucesso.', 'success');
@@ -66,10 +66,10 @@ class :skeleton_nameController extends Controller
             flash('Falha na atualização.', 'danger');
         }
 
-            return ($url = session()->get('backUrl')) ? redirect($url) : redirect()->route('admix.:skeleton_name_plural_lower.index');
-        }
+        return ($url = session()->get('backUrl')) ? redirect($url) : redirect()->route('admix.:skeleton_name_plural_lower.index');
+    }
 
-    public function destroy(: skeleton_name $:skeleton_name_lower)
+    public function destroy(:skeleton_name $:skeleton_name_lower)
     {
         if ($:skeleton_name_lower->delete()) {
             flash('Item removido com sucesso.', 'success');
@@ -81,9 +81,9 @@ class :skeleton_nameController extends Controller
         }
 
     public function restore($id)
-{
-    $model = :skeleton_name::onlyTrashed()
-    ->find($id);
+    {
+        $model = :skeleton_name::onlyTrashed()
+            ->find($id);
 
         if (!$model) {
             flash('Item já restaurado.', 'danger');
@@ -97,21 +97,21 @@ class :skeleton_nameController extends Controller
     }
 
     public function batchDestroy(Request $request)
-{
-    if (:skeleton_name::destroy($request->get('id', []))) {
-        flash('Item removido com sucesso.', 'success');
-    } else {
-        flash('Falha na remoção.', 'danger');
-    }
+    {
+        if (:skeleton_name::destroy($request->get('id', []))) {
+            flash('Item removido com sucesso.', 'success');
+        } else {
+            flash('Falha na remoção.', 'danger');
+        }
 
         return ($url = session()->get('backUrl')) ? redirect($url) : redirect()->route('admix.:skeleton_name_plural_lower.index');
     }
 
     public function batchRestore(Request $request)
-{
-    $model = :skeleton_name::onlyTrashed()
-    ->whereIn('id', $request->get('id', []))
-    ->restore();
+    {
+        $model = :skeleton_name::onlyTrashed()
+            ->whereIn('id', $request->get('id', []))
+            ->restore();
 
         if ($model) {
             flash('Item restaurado com sucesso.', 'success');

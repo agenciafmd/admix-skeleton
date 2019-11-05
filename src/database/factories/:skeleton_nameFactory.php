@@ -1,10 +1,7 @@
 <?php
 
-use;
 use Faker\Generator;
-
-:
-namespace_vendor\:namespace_skeleton_name\:skeleton_name;
+use :namespace_vendor\:namespace_skeleton_name\:skeleton_name;
 
 $factory->define(:skeleton_name::class, function (Generator $faker)
 {
