@@ -6,8 +6,7 @@ use Illuminate\Support\Facades\DB;
 
 class :skeleton_name_pluralTableSeeder extends Seeder
 {
-    protected
-    $total = 20;
+    protected $total = 20;
 
     public function run()
     {
