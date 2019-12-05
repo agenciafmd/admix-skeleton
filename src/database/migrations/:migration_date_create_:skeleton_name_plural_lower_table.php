@@ -6,8 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 class Create:skeleton_name_pluralTable extends Migration
 {
-    public
-    function up()
+    public function up()
     {
         Schema::create(':skeleton_name_plural_lower', function (Blueprint $table) {
             $table->increments('id');
@@ -20,8 +19,7 @@ class Create:skeleton_name_pluralTable extends Migration
         });
     }
 
-    public
-    function down()
+    public function down()
     {
         Schema::dropIfExists(':skeleton_name_plural_lower');
     }

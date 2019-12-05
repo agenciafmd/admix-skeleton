@@ -8,6 +8,8 @@ use Illuminate\Support\Str;
 use OwenIt\Auditing\Auditable;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
+use Agenciafmd\Admix\MediaTrait;
+use OwenIt\Auditing\Contracts\Auditable as AuditableContract;
 
 class :skeleton_name extends Model implements AuditableContract, HasMedia
 {
