@@ -2,10 +2,7 @@
   "name": ":vendor/:package_name",
   "description": ":package_description",
   "homepage": "https://github.com/:vendor/:package_name",
-  "keywords": [
-    "laravel",
-    "agenciafmd"
-  ],
+  "license": "MIT",
   "authors": [
     {
       "name": ":author_name",
