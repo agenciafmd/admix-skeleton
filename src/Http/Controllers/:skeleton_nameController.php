@@ -15,7 +15,8 @@ class :skeleton_nameController extends Controller
 
         $query = QueryBuilder::for(:skeleton_name::class)
             ->defaultSorts(config(':package_name.default_sort'))
-        ->allowedFilters((($request->filter) ? array_keys($request->get('filter')) : []));
+            ->allowedSorts($request->sort)
+            ->allowedFilters((($request->filter) ? array_keys($request->get('filter')) : []));
 
         if ($request->is('*/trash')) {
             $query->onlyTrashed();
