@@ -25,11 +25,11 @@
 @section('batch')
     @if(request()->is('*/trash'))
         @can('restore', '\:namespace_vendor\:namespace_skeleton_name\:skeleton_name')
-            @inputSelect(['batch', ['' => 'com os selecionados', route('admix.:skeleton_name_plural_lower.batchRestore') => '- restaurar'], null, ['class' => 'js-batch-select form-control custom-select']])
+            {{ Form::select('batch', ['' => 'com os selecionados', route('admix.:skeleton_name_plural_lower.batchRestore') => '- restaurar'], null, ['class' => 'js-batch-select form-control custom-select']) }}
         @endcan
     @else
         @can('delete', '\:namespace_vendor\:namespace_skeleton_name\:skeleton_name')
-            @inputSelect(['batch', ['' => 'com os selecionados', route('admix.:skeleton_name_plural_lower.batchDestroy') => '- remover'], null, ['class' => 'js-batch-select form-control custom-select']])
+            {{ Form::select('batch', ['' => 'com os selecionados', route('admix.:skeleton_name_plural_lower.batchDestroy') => '- remover'], null, ['class' => 'js-batch-select form-control custom-select']) }}
         @endcan
     @endif
 @endsection
