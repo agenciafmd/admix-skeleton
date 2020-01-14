@@ -1,7 +1,7 @@
 @extends('agenciafmd/admix::partials.crud.form')
 
 @section('form')
-    {!! Form::bsOpen(['model' => optional($model), 'create' => route('admix.:skeleton_name_plural_lower.store'), 'update' => route('admix.:skeleton_name_plural_lower.update', [':skeleton_name_lower' => ($model->id) ?? 0])]) !!}
+    {{ Form::bsOpen(['model' => optional($model), 'create' => route('admix.:skeleton_name_plural_lower.store'), 'update' => route('admix.:skeleton_name_plural_lower.update', [':skeleton_name_lower' => ($model->id) ?? 0])]) }}
     <div class="card-header bg-gray-lightest">
         <h3 class="card-title">
             @if(request()->is('*/create'))
@@ -22,14 +22,14 @@
     <ul class="list-group list-group-flush">
 
         @if (optional($model)->id)
-            {!! Form::bsText('Código', 'id', null, ['disabled' => true]) !!}
+            {{ Form::bsText('Código', 'id', null, ['disabled' => true]) }}
         @endif
 
-        {!! Form::bsIsActive('Ativo', 'is_active', null, ['required']) !!}
+        {{ Form::bsIsActive('Ativo', 'is_active', null, ['required']) }}
 
-        {!! Form::bsText('Nome', 'name', null, ['required']) !!}
+        {{ Form::bsText('Nome', 'name', null, ['required']) }}
 
-        {{--        {!! Form::bsImage('Imagem', 'image', $model) !!}--}}
+        {{--        {{ Form::bsImage('Imagem', 'image', $model) }}--}}
     </ul>
     <div class="card-footer bg-gray-lightest text-right">
         <div class="d-flex">
@@ -40,5 +40,5 @@
             @endif
         </div>
     </div>
-    {!! Form::close() !!}
+    {{ Form::close() }}
 @endsection
