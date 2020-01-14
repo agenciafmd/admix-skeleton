@@ -1,7 +1,7 @@
 @extends('agenciafmd/admix::partials.crud.form')
 
 @section('form')
-    {!! Form::bsOpen(['model' => optional($model), 'create' => route('admix.:skeleton_name_plural_lower.store'), 'update' => route('admix.:skeleton_name_plural_lower.update', [$model->id])]) !!}
+    {!! Form::bsOpen(['model' => optional($model), 'create' => route('admix.:skeleton_name_plural_lower.store'), 'update' => route('admix.:skeleton_name_plural_lower.update', [':skeleton_name_lower' => ($model->id) ?? 0])]) !!}
     <div class="card-header bg-gray-lightest">
         <h3 class="card-title">
             @if(request()->is('*/create'))
