@@ -17,7 +17,7 @@ class :skeleton_name_pluralTableSeeder extends Seeder
             ->where('model_type', ':namespace_vendor\\:namespace_skeleton_name\\:skeleton_name')
             ->delete();
 
-        $faker = Faker\Factory::create();
+        $faker = Faker\Factory::create('pt_BR');
 
         $this->command->getOutput()
             ->progressStart($this->total);
