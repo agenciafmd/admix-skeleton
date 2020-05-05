@@ -1,7 +1,7 @@
 {
     "namespaces": [
         {
-            "namespace": ":vendor/:skeleton_name_lower",
+            "namespace": ":vendor/:skeleton_name_plural_lower",
             "path": "src/resources/views"
         }
     ]
