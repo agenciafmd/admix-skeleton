@@ -3,7 +3,7 @@
 namespace :namespace_vendor\:namespace_skeleton_name\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use :namespace_vendor\:namespace_skeleton_name\Http\Requests\:skeleton_nameRequest;
 use Spatie\QueryBuilder\QueryBuilder;
 use :namespace_vendor\:namespace_skeleton_name\:skeleton_name;
 
@@ -34,7 +34,7 @@ class :skeleton_nameController extends Controller
         return view(':vendor/:skeleton_name_plural_lower::form', $view);
     }
 
-    public function store(Request $request)
+    public function store(:skeleton_nameRequest $request)
     {
         if (:skeleton_name::create($request->validated())) {
             flash('Item inserido com sucesso.', 'success');
@@ -59,7 +59,7 @@ class :skeleton_nameController extends Controller
         return view(':vendor/:skeleton_name_plural_lower::form', $view);
     }
 
-    public function update(:skeleton_name $:skeleton_name_lower, Request $request)
+    public function update(:skeleton_name $:skeleton_name_lower, :skeleton_nameRequest $request)
     {
         if ($:skeleton_name_lower->update($request->validated())) {
             flash('Item atualizado com sucesso.', 'success');
