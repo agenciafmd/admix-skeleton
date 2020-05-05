@@ -36,7 +36,7 @@ class :skeleton_nameController extends Controller
 
     public function store(Request $request)
     {
-        if (:skeleton_name::create($request->all())) {
+        if (:skeleton_name::create($request->validated())) {
             flash('Item inserido com sucesso.', 'success');
         } else {
             flash('Falha no cadastro.', 'danger');
@@ -61,7 +61,7 @@ class :skeleton_nameController extends Controller
 
     public function update(:skeleton_name $:skeleton_name_lower, Request $request)
     {
-        if ($:skeleton_name_lower->update($request->all())) {
+        if ($:skeleton_name_lower->update($request->validated())) {
             flash('Item atualizado com sucesso.', 'success');
         } else {
             flash('Falha na atualização.', 'danger');
