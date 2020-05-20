@@ -3,6 +3,7 @@
 namespace :namespace_vendor\:namespace_skeleton_name\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use :namespace_vendor\:namespace_skeleton_name\Http\Requests\:skeleton_nameRequest;
 use Spatie\QueryBuilder\QueryBuilder;
 use :namespace_vendor\:namespace_skeleton_name\:skeleton_name;
