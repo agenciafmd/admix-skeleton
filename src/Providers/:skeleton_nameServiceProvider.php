@@ -2,6 +2,7 @@
 
 namespace :namespace_vendor\:namespace_skeleton_name\Providers;
 
+use :namespace_vendor\:namespace_skeleton_name\:skeleton_name;
 use Illuminate\Support\ServiceProvider;
 
 class :skeleton_nameServiceProvider extends ServiceProvider
@@ -11,6 +12,8 @@ class :skeleton_nameServiceProvider extends ServiceProvider
         $this->providers();
 
         $this->setMenu();
+
+        $this->setSearch();
 
         $this->loadViews();
 
@@ -40,6 +43,12 @@ class :skeleton_nameServiceProvider extends ServiceProvider
                 'view' => ':vendor/:skeleton_name_plural_lower::partials.menus.item',
                 'ord' => config(':package_name.sort', 1),
             ]);
+    }
+
+    protected function setSearch()
+    {
+        $this->app->make('admix-search')
+            ->registerModel(:skeleton_name::class, 'name');
     }
 
     protected function loadViews()

@@ -10,8 +10,10 @@ use OwenIt\Auditing\Contracts\Auditable as AuditableContract;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 use Agenciafmd\Admix\MediaTrait;
+use Spatie\Searchable\Searchable;
+use Spatie\Searchable\SearchResult;
 
-class :skeleton_name extends Model implements AuditableContract, HasMedia
+class :skeleton_name extends Model implements AuditableContract, HasMedia, Searchable
 {
     use SoftDeletes, Auditable, HasMediaTrait, MediaTrait {
         MediaTrait::registerMediaConversions insteadof HasMediaTrait;
@@ -20,6 +22,24 @@ class :skeleton_name extends Model implements AuditableContract, HasMedia
     protected $guarded = [
         'media',
     ];
+
+    public $searchableType;
+
+    public function __construct(array $attributes = [])
+    {
+        parent::__construct($attributes);
+
+        $this->searchableType = config(':package_name.name');
+    }
+
+    public function getSearchResult(): SearchResult
+    {
+        return new SearchResult(
+            $this,
+            $this->name,
+            route('admix.:skeleton_name_plural_lower.edit', $this->id)
+        );
+    }
 
     protected static function boot()
     {
