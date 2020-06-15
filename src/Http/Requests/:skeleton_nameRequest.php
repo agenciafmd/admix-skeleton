@@ -11,9 +11,18 @@ class :skeleton_nameRequest extends FormRequest
     public function rules()
     {
         return [
-            'is_active' => ['required', 'boolean'],
-            'name' => ['nullable', 'max:150'],
-            'media' => ['array', 'nullable'],
+            'is_active' => [
+                'required',
+                'boolean',
+            ],
+            'name' => [
+                'required',
+                'max:150',
+            ],
+            'media' => [
+                'array',
+                'nullable',
+            ],
         ];
     }
 
