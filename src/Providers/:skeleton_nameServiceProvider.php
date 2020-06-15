@@ -32,8 +32,9 @@ class :skeleton_nameServiceProvider extends ServiceProvider
 
     protected function providers()
     {
-        $this->app->register(RouteServiceProvider::class);
         $this->app->register(AuthServiceProvider::class);
+        $this->app->register(RouteServiceProvider::class);
+        $this->app->register(LivewireServiceProvider::class);
     }
 
     protected function setMenu()
