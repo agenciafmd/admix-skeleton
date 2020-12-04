@@ -1,6 +1,6 @@
 <?php
 
-use :namespace_vendor\:namespace_skeleton_name\:skeleton_name;
+use :namespace_vendor\:namespace_skeleton_name\Models\:skeleton_name;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -10,11 +10,11 @@ class :skeleton_name_pluralTableSeeder extends Seeder
 
     public function run()
     {
-        :skeleton_name::withTrashed()
-            ->get()->each->forceDelete();
+        :skeleton_name::query()
+            ->truncate();
 
         DB::table('media')
-            ->where('model_type', ':namespace_vendor\\:namespace_skeleton_name\\:skeleton_name')
+            ->where('model_type', ':namespace_vendor\\:namespace_skeleton_name\\Models\\:skeleton_name')
             ->delete();
 
         $faker = Faker\Factory::create('pt_BR');
@@ -22,15 +22,16 @@ class :skeleton_name_pluralTableSeeder extends Seeder
         $this->command->getOutput()
             ->progressStart($this->total);
 
-        factory(:skeleton_name::class, $this->total)
+        :skeleton_name::factory($this->total)
             ->create()
             ->each(function ($item) use ($faker) {
 
-                $item->doUpload($faker->file(__DIR__ . '/../faker/image', storage_path('admix/tmp')), 'image');
+                  $item->doUpload($faker->file(__DIR__ . '/../faker/image', storage_path('admix/tmp')), 'image');
 
-                $this->command->getOutput()
-                    ->progressAdvance();
-            });
+                  $this->command->getOutput()
+                      ->progressAdvance();
+              });
+
         $this->command->getOutput()
             ->progressFinish();
     }

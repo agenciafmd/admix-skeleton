@@ -8,21 +8,17 @@
                 Criar
             @elseif(request()->is('*/edit'))
                 Editar
-            @else
-                Visualizar
             @endif
             {{ config(':package_name.name') }}
         </h3>
         <div class="card-options">
-            @if(strpos(request()->route()->getName(), 'show') === false)
-                @include('agenciafmd/admix::partials.btn.save')
-            @endif
+            @include('agenciafmd/admix::partials.btn.save')
         </div>
     </div>
     <ul class="list-group list-group-flush">
 
         @if (optional($model)->id)
-            {{ Form::bsText('Código', 'id', null, ['disabled' => true]) }}
+            {{ Form::bsText('Código', 'id', null, ['disabled']) }}
         @endif
 
         {{ Form::bsIsActive('Ativo', 'is_active', null, ['required']) }}
@@ -34,10 +30,7 @@
     <div class="card-footer bg-gray-lightest text-right">
         <div class="d-flex">
             @include('agenciafmd/admix::partials.btn.back')
-
-            @if(strpos(request()->route()->getName(), 'show') === false)
-                @include('agenciafmd/admix::partials.btn.save')
-            @endif
+            @include('agenciafmd/admix::partials.btn.save')
         </div>
     </div>
     {{ Form::close() }}

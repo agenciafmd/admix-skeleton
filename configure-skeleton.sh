@@ -122,6 +122,8 @@ echo
 echo "Removendo a pasta .git"
 
 rm -rf .git
+rm LICENSE.md
+rm README.md
 
 echo
 echo "Substituindo as strings"

@@ -3,11 +3,20 @@
 return [
     ':skeleton_name_lower' => [
         'image' => [
-            'width' => 500,
-            'height' => 500,
-            'quality' => 100,
-            'optimize' => true,
-            'crop' => true,
+            'sources' => [
+                [
+                    'conversion' => 'min-width-1366',
+                    'media' => '(min-width: 1366px)',
+                    'width' => 800,
+                    'height' => 450,
+                ],
+                [
+                    'conversion' => 'min-width-1280',
+                    'media' => '(min-width: 1280px)',
+                    'width' => 650,
+                    'height' => 366,
+                ],
+            ],
         ],
     ],
 ];

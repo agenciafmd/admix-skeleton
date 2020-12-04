@@ -1,0 +1,18 @@
+<?php
+
+namespace Database\Factories;
+
+use :namespace_vendor\:namespace_skeleton_name\Models\:skeleton_name;
+use Illuminate\Database\Eloquent\Factories\Factory;
+
+class :skeleton_nameFactory extends Factory
+{
+    protected $model = :skeleton_name::class;
+
+    public function definition()
+    {
+        return [
+            'name' => $this->faker->name,
+        ];
+    }
+}

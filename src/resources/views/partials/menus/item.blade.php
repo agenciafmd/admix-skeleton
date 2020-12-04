@@ -1,8 +1,8 @@
-@can('view', '\:namespace_vendor\:namespace_skeleton_name\:skeleton_name')
+@can('view', \:namespace_vendor\:namespace_skeleton_name\Models\:skeleton_name::class)
     <li class="nav-item">
-        <a class="nav-link {{ (admix_is_active(route('admix.:skeleton_name_plural_lower.index'))) ? 'active' : '' }}"
+        <a class="nav-link {{ (Str::startsWith(request()->route()->getName(), 'admix.:skeleton_name_plural_lower')) ? 'active' : '' }}"
            href="{{ route('admix.:skeleton_name_plural_lower.index') }}"
-           aria-expanded="{{ (admix_is_active(route('admix.:skeleton_name_plural_lower.index'))) ? 'true' : 'false' }}">
+           aria-expanded="{{ (Str::startsWith(request()->route()->getName(), 'admix.:skeleton_name_plural_lower')) ? 'true' : 'false' }}">
         <span class="nav-icon">
             <i class="icon {{ config(':package_name.icon') }}"></i>
         </span>

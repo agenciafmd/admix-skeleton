@@ -6,7 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use :namespace_vendor\:namespace_skeleton_name\Http\Requests\:skeleton_nameRequest;
 use Spatie\QueryBuilder\QueryBuilder;
-use :namespace_vendor\:namespace_skeleton_name\:skeleton_name;
+use Spatie\QueryBuilder\AllowedFilter;
+use :namespace_vendor\:namespace_skeleton_name\Models\:skeleton_name;
 
 class :skeleton_nameController extends Controller
 {
@@ -17,7 +18,10 @@ class :skeleton_nameController extends Controller
         $query = QueryBuilder::for(:skeleton_name::class)
             ->defaultSorts(config(':package_name.default_sort'))
             ->allowedSorts($request->sort)
-            ->allowedFilters((($request->filter) ? array_keys($request->get('filter')) : []));
+            ->allowedFilters(array_merge((($request->filter) ? array_keys(array_diff_key($request->filter, array_flip(['id', 'is_active']))) : []), [
+                AllowedFilter::exact('id'),
+                AllowedFilter::exact('is_active'),
+            ]));
 
         if ($request->is('*/trash')) {
             $query->onlyTrashed();

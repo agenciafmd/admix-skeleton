@@ -1,41 +1,37 @@
 {
-  "name": ":vendor/:package_name",
-  "description": ":package_description",
-  "homepage": "https://github.com/:vendor/:package_name",
-  "license": "MIT",
-  "authors": [
-    {
-      "name": ":author_name",
-      "email": ":author_email",
-      "homepage": "https://fmd.ag/",
-      "role": "Developer"
-    }
-  ],
-  "require": {
-    "laravel/framework": "6.*"
-  },
-  "autoload": {
-    "classmap": [
-      "src/database/seeds",
-      "src/database/factories"
+    "name": ":vendor/:package_name",
+    "description": ":package_description",
+    "homepage": "https://github.com/:vendor/:package_name",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": ":author_name",
+            "email": ":author_email",
+            "homepage": "https://fmd.ag/",
+            "role": "Developer"
+        }
     ],
-    "files": [
-      "src/Http/helpers.php"
-    ],
-    "psr-4": {
-      ":namespace_vendor\\:namespace_skeleton_name\\": "src/"
+    "require": {
+        "laravel/framework": "8.*"
+    },
+    "autoload": {
+        "files": [
+            "src/Http/helpers.php"
+        ],
+        "psr-4": {
+            ":namespace_vendor\\:namespace_skeleton_name\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                ":namespace_vendor\\:namespace_skeleton_name\\Providers\\:skeleton_nameServiceProvider"
+            ],
+            "aliases": {
+            }
+        }
+    },
+    "config": {
+        "sort-packages": true
     }
-  },
-  "extra": {
-    "laravel": {
-      "providers": [
-        ":namespace_vendor\\:namespace_skeleton_name\\Providers\\:skeleton_nameServiceProvider"
-      ],
-      "aliases": {
-      }
-    }
-  },
-  "config": {
-    "sort-packages": true
-  }
 }

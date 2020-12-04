@@ -1,26 +1,29 @@
 <?php
 
-namespace :namespace_vendor\:namespace_skeleton_name;
+namespace :namespace_vendor\:namespace_skeleton_name\Models;
 
+//use Database\Factories\:skeleton_nameFactory;
+use Agenciafmd\Media\Traits\MediaTrait;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
 use OwenIt\Auditing\Auditable;
 use OwenIt\Auditing\Contracts\Auditable as AuditableContract;
-use Spatie\MediaLibrary\HasMedia\HasMedia;
-use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
-use Agenciafmd\Admix\MediaTrait;
+use Spatie\MediaLibrary\HasMedia;
 use Spatie\Searchable\Searchable;
 use Spatie\Searchable\SearchResult;
 
 class :skeleton_name extends Model implements AuditableContract, HasMedia, Searchable
 {
-    use SoftDeletes, Auditable, HasMediaTrait, MediaTrait {
-        MediaTrait::registerMediaConversions insteadof HasMediaTrait;
-    }
+    use SoftDeletes, HasFactory, Auditable, MediaTrait;
 
     protected $guarded = [
         'media',
+    ];
+
+    protected $casts = [
+        'is_active' => 'boolean',
     ];
 
     public $searchableType;
@@ -41,15 +44,6 @@ class :skeleton_name extends Model implements AuditableContract, HasMedia, Searc
         );
     }
 
-    protected static function boot()
-    {
-        parent::boot();
-
-        static::saving(function ($model) {
-            $model->slug = Str::slug($model->name);
-        });
-    }
-
     public function scopeIsActive($query)
     {
         $query->where('is_active', 1);
@@ -63,4 +57,9 @@ class :skeleton_name extends Model implements AuditableContract, HasMedia, Searc
             $query->orderBy($sort['field'], $sort['direction']);
         }
     }
+//
+//    protected static function newFactory()
+//    {
+//        return :skeleton_nameFactory::new();
+//    }
 }

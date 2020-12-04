@@ -13,10 +13,10 @@
     @if(request()->is('*/trash'))
         @include('agenciafmd/admix::partials.btn.back', ['url' => route('admix.:skeleton_name_plural_lower.index')])
     @else
-        @can('create', '\:namespace_vendor\:namespace_skeleton_name\:skeleton_name')
+        @can('create', \:namespace_vendor\:namespace_skeleton_name\Models\:skeleton_name::class)
             @include('agenciafmd/admix::partials.btn.create', ['url' => route('admix.:skeleton_name_plural_lower.create'), 'label' => config(':package_name.name')])
         @endcan
-        @can('restore', '\:namespace_vendor\:namespace_skeleton_name\:skeleton_name')
+        @can('restore', \:namespace_vendor\:namespace_skeleton_name\Models\:skeleton_name::class)
             @include('agenciafmd/admix::partials.btn.trash', ['url' => route('admix.:skeleton_name_plural_lower.trash')])
         @endcan
     @endif
@@ -24,12 +24,18 @@
 
 @section('batch')
     @if(request()->is('*/trash'))
-        @can('restore', '\:namespace_vendor\:namespace_skeleton_name\:skeleton_name')
-            {{ Form::select('batch', ['' => 'com os selecionados', route('admix.:skeleton_name_plural_lower.batchRestore') => '- restaurar'], null, ['class' => 'js-batch-select form-control custom-select']) }}
+        @can('restore', \:namespace_vendor\:namespace_skeleton_name\Models\:skeleton_name::class)
+            {{ Form::select('batch', [
+                    '' => 'com os selecionados',
+                    route('admix.:skeleton_name_plural_lower.batchRestore') => '- restaurar',
+                ], null, ['class' => 'js-batch-select form-control custom-select']) }}
         @endcan
     @else
-        @can('delete', '\:namespace_vendor\:namespace_skeleton_name\:skeleton_name')
-            {{ Form::select('batch', ['' => 'com os selecionados', route('admix.:skeleton_name_plural_lower.batchDestroy') => '- remover'], null, ['class' => 'js-batch-select form-control custom-select']) }}
+        @can('delete', \:namespace_vendor\:namespace_skeleton_name\Models\:skeleton_name::class)
+            {{ Form::select('batch', [
+                    '' => 'com os selecionados',
+                    route('admix.:skeleton_name_plural_lower.batchDestroy') => '- remover',
+                ], null, ['class' => 'js-batch-select form-control custom-select']) }}
         @endcan
     @endif
 @endsection
@@ -46,7 +52,7 @@
                     <th class="w-1 d-none d-md-table-cell">&nbsp;</th>
                     <th class="w-1">{!! column_sort('#', 'id') !!}</th>
                     <th>{!! column_sort('Nome', 'name') !!}</th>
-                    <th>{!! column_sort('Status', 'is_active') !!}</th>
+                    <th class="w-1">{!! column_sort('Ativo', 'is_active') !!}</th>
                     <th></th>
                 </tr>
                 </thead>
@@ -63,7 +69,7 @@
                         <td><span class="text-muted">{{ $item->id }}</span></td>
                         <td>{{ $item->name }}</td>
                         <td>
-                            @include('agenciafmd/admix::partials.label.status', ['status' => $item->is_active])
+                            @livewire('admix::is-active', ['myModel' => get_class($item), 'myId' => $item->id])
                         </td>
                         @if(request()->is('*/trash'))
                             <td class="w-1 text-right">
@@ -76,11 +82,10 @@
                                         <i class="icon fe-more-vertical text-muted"></i>
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right">
-                                        @include('agenciafmd/admix::partials.btn.show', ['url' => route('admix.:skeleton_name_plural_lower.show', $item->id)])
-                                        @can('update', '\:namespace_vendor\:namespace_skeleton_name\:skeleton_name')
+                                        @can('update', \:namespace_vendor\:namespace_skeleton_name\Models\:skeleton_name::class)
                                             @include('agenciafmd/admix::partials.btn.edit', ['url' => route('admix.:skeleton_name_plural_lower.edit', $item->id)])
                                         @endcan
-                                        @can('delete', '\:namespace_vendor\:namespace_skeleton_name\:skeleton_name')
+                                        @can('delete', \:namespace_vendor\:namespace_skeleton_name\Models\:skeleton_name::class)
                                             @include('agenciafmd/admix::partials.btn.remove', ['url' => route('admix.:skeleton_name_plural_lower.destroy', $item->id)])
                                         @endcan
                                     </div>
