@@ -2,6 +2,9 @@
 
 return [
     ':skeleton_name_lower' => [
+        'label' => 'imagem', //label do campo
+        'multiple' => false, //se permite o upload multiplo
+        'faker_dir' => false, #database_path('faker/:skeleton_name_lower/image'),
         'image' => [
             'sources' => [
                 [

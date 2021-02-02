@@ -25,12 +25,26 @@ class :skeleton_name_pluralTableSeeder extends Seeder
         :skeleton_name::factory($this->total)
             ->create()
             ->each(function ($item) use ($faker) {
+                foreach (config('upload-configs.:skeleton_name_lower') as $key => $image) {
+                    $fakerDir = __DIR__ . '/../faker/:skeleton_name_lower/' . $key;
 
-                  $item->doUpload($faker->file(__DIR__ . '/../faker/image', storage_path('admix/tmp')), 'image');
+                    if ($image['faker_dir']) {
+                        $fakerDir = $image['faker_dir'];
+                    }
 
-                  $this->command->getOutput()
+                    if ($image['multiple']) {
+                        $items = $faker->numberBetween(0, 6);
+                        for ($i = 0; $i < $items; $i++) {
+                            $item->doUploadMultiple($faker->file($fakerDir, storage_path('admix/tmp')), $key);
+                        }
+                    } else {
+                        $item->doUpload($faker->file($fakerDir, storage_path('admix/tmp')), $key);
+                    }
+                }
+
+                $this->command->getOutput()
                       ->progressAdvance();
-              });
+            });
 
         $this->command->getOutput()
             ->progressFinish();
