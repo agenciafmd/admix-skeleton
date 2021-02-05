@@ -2,7 +2,7 @@
 
 namespace :namespace_vendor\:namespace_skeleton_name\Models;
 
-//use Database\Factories\:skeleton_nameFactory;
+use Database\Factories\:skeleton_nameFactory;
 use Agenciafmd\Media\Traits\MediaTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -57,9 +57,9 @@ class :skeleton_name extends Model implements AuditableContract, HasMedia, Searc
             $query->orderBy($sort['field'], $sort['direction']);
         }
     }
-//
-//    protected static function newFactory()
-//    {
-//        return :skeleton_nameFactory::new();
-//    }
+
+    protected static function newFactory()
+    {
+        return :skeleton_nameFactory::new();
+    }
 }
