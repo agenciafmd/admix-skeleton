@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use :namespace_vendor\:namespace_skeleton_name\Models\:skeleton_name;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Faker\Factory;
 
 class :skeleton_name_pluralTableSeeder extends Seeder
 {
@@ -19,7 +20,7 @@ class :skeleton_name_pluralTableSeeder extends Seeder
             ->where('model_type', ':namespace_vendor\\:namespace_skeleton_name\\Models\\:skeleton_name')
             ->delete();
 
-        $faker = Faker\Factory::create('pt_BR');
+        $faker = Factory::create('pt_BR');
 
         $this->command->getOutput()
             ->progressStart($this->total);
