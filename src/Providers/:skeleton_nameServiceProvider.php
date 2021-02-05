@@ -63,6 +63,6 @@ class :skeleton_nameServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__ . '/../database/factories/:skeleton_nameFactory.php.stub' => base_path('database/factories/:skeleton_nameFactory.php'),
             __DIR__ . '/../database/seeders/:skeleton_name_pluralTableSeeder.php.stub' => base_path('database/seeders/:skeleton_name_pluralTableSeeder.php'),
-        ], ':package_name:seeds');
+        ], ':package_name:seeders');
     }
 }
