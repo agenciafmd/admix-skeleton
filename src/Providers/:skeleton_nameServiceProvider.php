@@ -17,6 +17,8 @@ class :skeleton_nameServiceProvider extends ServiceProvider
         $this->setSearch();
 
         $this->loadMigrations();
+
+        $this->publish();
     }
 
     protected function providers()
@@ -54,5 +56,13 @@ class :skeleton_nameServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(__DIR__ . '/../config/gate.php', 'gate');
         $this->mergeConfigFrom(__DIR__ . '/../config/audit-alias.php', 'audit-alias');
         $this->mergeConfigFrom(__DIR__ . '/../config/upload-configs.php', 'upload-configs');
+    }
+
+    protected function publish()
+    {
+        $this->publishes([
+            __DIR__ . '/../database/factories/:skeleton_nameFactory.php.stub' => base_path('database/factories/:skeleton_nameFactory.php'),
+            __DIR__ . '/../database/seeders/:skeleton_name_pluralTableSeeder.php.stub' => base_path('database/seeders/:skeleton_name_pluralTableSeeder.php'),
+        ], ':package_name:seeds');
     }
 }
