@@ -25,7 +25,14 @@
 
         {{ Form::bsText('Nome', 'name', null, ['required']) }}
 
-        {{--        {{ Form::bsImage('Imagem', 'image', $model) }}--}}
+        @foreach(config('upload-configs.:skeleton_name_lower') as $field => $upload)
+            @if($upload['multiple'])
+                {{ Form::bsImages($upload['label'], $field, $model) }}
+            @else
+                {{ Form::bsImage($upload['label'], $field, $model) }}
+            @endif
+        @endforeach
+
     </ul>
     <div class="card-footer bg-gray-lightest text-right">
         <div class="d-flex">
