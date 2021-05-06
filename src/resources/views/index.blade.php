@@ -41,6 +41,16 @@
 @endsection
 
 @section('filters')
+    <!--h6 class="dropdown-header bg-gray-lightest p-2">Destaque</h6>
+    <div class="p-2">
+        {{ Form::select('filter[star]', [
+                '' => '-',
+                '1' => 'Sim',
+                '0' => 'Não'
+            ], filter('star'), [
+                'class' => 'form-control form-control-sm'
+            ]) }}
+    </div-->
 @endsection
 
 @section('table')
@@ -52,6 +62,8 @@
                     <th class="w-1 d-none d-md-table-cell">&nbsp;</th>
                     <th class="w-1">{!! column_sort('#', 'id') !!}</th>
                     <th>{!! column_sort('Nome', 'name') !!}</th>
+                    <!--th>{!! column_sort('Ordenação', 'sort') !!}</th-->
+                    <!--th>{!! column_sort('Destaque', 'star') !!}</th-->
                     <th class="w-1">{!! column_sort('Ativo', 'is_active') !!}</th>
                     <th></th>
                 </tr>
@@ -68,6 +80,10 @@
                         </td>
                         <td><span class="text-muted">{{ $item->id }}</span></td>
                         <td>{{ $item->name }}</td>
+                        <!--td>{{ $item->sort }}</td-->
+                        <!--td>
+                            @include('agenciafmd/admix::partials.label.star', ['star' => $item->star])
+                        </td-->
                         <td>
                             @livewire('admix::is-active', ['myModel' => get_class($item), 'myId' => $item->id])
                         </td>

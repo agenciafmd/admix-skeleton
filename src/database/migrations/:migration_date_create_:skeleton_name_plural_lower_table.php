@@ -12,8 +12,12 @@ class Create:skeleton_name_pluralTable extends Migration
             $table->increments('id');
             $table->boolean('is_active')
                 ->default(1);
+            $table->boolean('star')
+                ->default(0);
             $table->string('name');
             $table->string('slug');
+            $table->integer('sort')
+                ->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

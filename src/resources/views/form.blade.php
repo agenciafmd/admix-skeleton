@@ -23,6 +23,8 @@
 
         {{ Form::bsIsActive('Ativo', 'is_active', null, ['required']) }}
 
+        {{-- Form::bsBoolean('Destaque', 'star', null, ['required']) --}}
+
         {{ Form::bsText('Nome', 'name', null, ['required']) }}
 
         @foreach(config('upload-configs.:skeleton_name_lower') as $field => $upload)
@@ -32,6 +34,8 @@
                 {{ Form::bsImage($upload['label'], $field, $model) }}
             @endif
         @endforeach
+
+        {{-- Form::bsText('Ordenação', 'sort') --}}
 
     </ul>
     <div class="card-footer bg-gray-lightest text-right">

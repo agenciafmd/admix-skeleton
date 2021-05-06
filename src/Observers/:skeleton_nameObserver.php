@@ -18,7 +18,7 @@ class :skeleton_nameObserver
     {
         if (!app()->runningInConsole()) {
 
-            /* descomente caso for utilizar, não faça cache da listagem (ex. frontend.articles.index)
+            /* descomente caso for utilizar, não faça cache da listagem (ex. frontend.article.index)
             try {
                 dispatch(function () use ($model) {
                     Artisan::call('page-cache:clear', [

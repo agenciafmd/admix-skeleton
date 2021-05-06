@@ -24,6 +24,7 @@ class :skeleton_name extends Model implements AuditableContract, HasMedia, Searc
 
     protected $casts = [
         'is_active' => 'boolean',
+        'star' => 'boolean',
     ];
 
     public $searchableType;
@@ -44,6 +45,13 @@ class :skeleton_name extends Model implements AuditableContract, HasMedia, Searc
         );
     }
 
+    /*public function getUrlAttribute()
+    {
+        return route('frontend.:skeleton_name_lower.show', [
+            $this->slug
+        ]);
+    }*/
+
     public function scopeIsActive($query)
     {
         $query->where('is_active', 1);
@@ -54,7 +62,12 @@ class :skeleton_name extends Model implements AuditableContract, HasMedia, Searc
         $sorts = default_sort(config(':package_name.default_sort'));
 
         foreach ($sorts as $sort) {
-            $query->orderBy($sort['field'], $sort['direction']);
+            if ($sort['field'] === 'sort') {
+                $query->orderByRaw('ISNULL(sort), sort ' . $sort['direction']);
+            }
+            else {
+                $query->orderBy($sort['field'], $sort['direction']);
+            }
         }
     }
 

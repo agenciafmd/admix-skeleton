@@ -6,6 +6,8 @@ return [
     'sort' => 20,
     'default_sort' => [
         '-is_active',
+        '-star',
+        'sort',
         'name',
     ],
 ];

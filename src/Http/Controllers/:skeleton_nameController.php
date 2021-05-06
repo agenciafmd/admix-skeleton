@@ -21,6 +21,7 @@ class :skeleton_nameController extends Controller
             ->allowedFilters(array_merge((($request->filter) ? array_keys(array_diff_key($request->filter, array_flip(['id', 'is_active']))) : []), [
                 AllowedFilter::exact('id'),
                 AllowedFilter::exact('is_active'),
+                AllowedFilter::exact('star'),
             ]));
 
         if ($request->is('*/trash')) {

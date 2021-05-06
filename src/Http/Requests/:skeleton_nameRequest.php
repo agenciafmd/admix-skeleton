@@ -15,12 +15,20 @@ class :skeleton_nameRequest extends FormRequest
                 'required',
                 'boolean',
             ],
+            'star' => [
+                'sometimes',
+                'required',
+                'boolean',
+            ],
             'name' => [
                 'required',
                 'max:150',
             ],
             'media' => [
                 'array',
+                'nullable',
+            ],
+            'sort' => [
                 'nullable',
             ],
         ];
@@ -30,7 +38,9 @@ class :skeleton_nameRequest extends FormRequest
     {
         return [
             'is_active' => 'ativo',
+            'star' => 'destaque',
             'name' => 'nome',
+            'sort' => 'ordenação',
         ];
     }
 

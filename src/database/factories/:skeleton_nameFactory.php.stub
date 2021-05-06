@@ -12,7 +12,12 @@ class :skeleton_nameFactory extends Factory
     public function definition()
     {
         return [
+            'is_active' => $this->faker->optional(0.2, 1)
+                ->randomElement([0]),
+            'star' => $this->faker->optional(0.2, 1)
+                ->randomElement([0]),
             'name' => $this->faker->name,
+            'sort' => null,
         ];
     }
 }
