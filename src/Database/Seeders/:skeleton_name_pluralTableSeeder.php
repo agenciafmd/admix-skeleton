@@ -1,11 +1,13 @@
 <?php
 
-namespace Database\Seeders;
+namespace :namespace_vendor\:namespace_skeleton_name\Database\Seeders;
 
 use :namespace_vendor\:namespace_skeleton_name\Models\:skeleton_name;
+use Faker\Factory;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Faker\Factory;
+use Illuminate\Http\File as HttpFile;
+use Illuminate\Support\Facades\Storage;
 
 class :skeleton_name_pluralTableSeeder extends Seeder
 {
@@ -29,7 +31,7 @@ class :skeleton_name_pluralTableSeeder extends Seeder
             ->create()
             ->each(function ($item) use ($faker) {
                 foreach (config('upload-configs.:skeleton_name_lower') as $key => $image) {
-                    $fakerDir = __DIR__ . '/../faker/:skeleton_name_lower/' . $key;
+                    $fakerDir = __DIR__ . '/../Faker/:skeleton_name_lower/' . $key;
 
                     if ($image['faker_dir']) {
                         $fakerDir = $image['faker_dir'];
@@ -38,10 +40,16 @@ class :skeleton_name_pluralTableSeeder extends Seeder
                     if ($image['multiple']) {
                         $items = $faker->numberBetween(0, 6);
                         for ($i = 0; $i < $items; $i++) {
-                            $item->doUploadMultiple($faker->file($fakerDir, storage_path('admix/tmp')), $key);
+                            $sourceFile = $faker->file($fakerDir, storage_path('admix/tmp'));
+                            $targetFile = Storage::putFile('tmp', new HttpFile($sourceFile));
+
+                            $item->doUploadMultiple($targetFile, $key);
                         }
                     } else {
-                        $item->doUpload($faker->file($fakerDir, storage_path('admix/tmp')), $key);
+                        $sourceFile = $faker->file($fakerDir, storage_path('admix/tmp'));
+                        $targetFile = Storage::putFile('tmp', new HttpFile($sourceFile));
+
+                        $item->doUpload($targetFile, $key);
                     }
                 }
 

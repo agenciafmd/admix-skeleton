@@ -26,9 +26,7 @@
         "laravel": {
             "providers": [
                 ":namespace_vendor\\:namespace_skeleton_name\\Providers\\:skeleton_nameServiceProvider"
-            ],
-            "aliases": {
-            }
+            ]
         }
     },
     "config": {

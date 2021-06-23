@@ -73,6 +73,10 @@ class :skeleton_name extends Model implements AuditableContract, HasMedia, Searc
 
     protected static function newFactory()
     {
+        if (class_exists(\Database\Seeders\:skeleton_nameFactory::class)) {
+            return \Database\Seeders\:skeleton_nameFactory::new();
+        }
+
         return :skeleton_nameFactory::new();
     }
 }

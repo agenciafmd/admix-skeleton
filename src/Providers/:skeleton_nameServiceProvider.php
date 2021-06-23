@@ -61,8 +61,14 @@ class :skeleton_nameServiceProvider extends ServiceProvider
     protected function publish()
     {
         $this->publishes([
-            __DIR__ . '/../database/factories/:skeleton_nameFactory.php.stub' => base_path('database/factories/:skeleton_nameFactory.php'),
-            __DIR__ . '/../database/seeders/:skeleton_name_pluralTableSeeder.php.stub' => base_path('database/seeders/:skeleton_name_pluralTableSeeder.php'),
+            __DIR__ . '/../Database/Faker' => base_path('database/faker'),
+            __DIR__ . '/../config/upload-configs.php' => base_path('config/upload-configs.php'),
+        ], ':package_name:minimal');
+
+        $this->publishes([
+            __DIR__ . '/../Database/Factories/:skeleton_nameFactory.php' => base_path('database/factories/:skeleton_nameFactory.php'),
+            __DIR__ . '/../Database/Faker' => base_path('database/faker'),
+            __DIR__ . '/../Database/Seeders/:skeleton_name_pluralTableSeeder.php' => base_path('database/seeders/:skeleton_name_pluralTableSeeder.php'),
         ], ':package_name:seeders');
     }
 }
